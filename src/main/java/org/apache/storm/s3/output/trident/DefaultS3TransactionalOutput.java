@@ -19,7 +19,7 @@ package org.apache.storm.s3.output.trident;
 
 
 import org.apache.storm.s3.output.Uploader;
-import storm.trident.tuple.TridentTuple;
+import org.apache.storm.trident.tuple.TridentTuple;
 
 import java.io.IOException;
 import java.util.List;

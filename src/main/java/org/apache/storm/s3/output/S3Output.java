@@ -17,8 +17,7 @@
  */
 package org.apache.storm.s3.output;
 
-
-import backtype.storm.tuple.Tuple;
+import org.apache.storm.tuple.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

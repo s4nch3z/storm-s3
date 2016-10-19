@@ -17,24 +17,22 @@
  */
 package org.apache.storm.s3.bolt;
 
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.topology.base.BaseRichBolt;
-import backtype.storm.tuple.Tuple;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.storm.s3.output.S3Output;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.storm.task.OutputCollector;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.topology.base.BaseRichBolt;
+import org.apache.storm.tuple.Tuple;
 
 import java.io.IOException;
 import java.util.Map;
 
+@Slf4j
 public class S3Bolt extends BaseRichBolt {
 
-    private static final Logger LOG = LoggerFactory.getLogger(S3Bolt.class);
-
-    private S3Output s3;
-    private OutputCollector collector;
+    private transient S3Output s3;
+    private transient OutputCollector collector;
 
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
@@ -46,7 +44,7 @@ public class S3Bolt extends BaseRichBolt {
             s3.withIdentifier(componentId + "-" + taskId);
             s3.prepare(stormConf);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error: " + e);
         }
     }
 
@@ -56,13 +54,13 @@ public class S3Bolt extends BaseRichBolt {
             s3.write(tuple);
             this.collector.ack(tuple);
         } catch (IOException e) {
-            LOG.warn("write/sync failed.", e);
+            log.warn("write/sync failed.", e);
             this.collector.fail(tuple);
         }
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-
+        log.info("declareOutputFields not implemented");
     }
 }

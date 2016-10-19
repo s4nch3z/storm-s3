@@ -17,14 +17,14 @@
  */
 package org.apache.storm.s3.trident.state.map;
 
-import backtype.storm.task.IMetricsContext;
 import org.apache.storm.s3.output.trident.DefaultFileOutputFactory;
 import org.apache.storm.s3.output.trident.FileOutputFactory;
 import org.apache.storm.s3.output.trident.S3TransactionalOutputFactory;
-import storm.trident.state.State;
-import storm.trident.state.map.TransactionalMap;
+import org.apache.storm.task.IMetricsContext;
+import org.apache.storm.trident.state.State;
+import org.apache.storm.trident.state.StateFactory;
+import org.apache.storm.trident.state.map.TransactionalMap;
 
-import storm.trident.state.StateFactory;
 import java.util.Map;
 
 public class S3TransactionalStateFactory implements StateFactory {

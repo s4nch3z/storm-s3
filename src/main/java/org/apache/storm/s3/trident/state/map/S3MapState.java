@@ -20,11 +20,11 @@ package org.apache.storm.s3.trident.state.map;
 import org.apache.storm.s3.output.trident.FileOutputFactory;
 import org.apache.storm.s3.output.trident.S3TransactionalOutput;
 import org.apache.storm.s3.output.trident.S3TransactionalOutputFactory;
+import org.apache.storm.trident.state.TransactionalValue;
+import org.apache.storm.trident.state.map.IBackingMap;
+import org.apache.storm.trident.tuple.TridentTuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import storm.trident.state.TransactionalValue;
-import storm.trident.state.map.IBackingMap;
-import storm.trident.tuple.TridentTuple;
 
 import java.io.IOException;
 import java.util.ArrayList;

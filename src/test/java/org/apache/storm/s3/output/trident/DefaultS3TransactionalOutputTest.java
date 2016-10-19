@@ -17,8 +17,6 @@
  */
 package org.apache.storm.s3.output.trident;
 
-import backtype.storm.Config;
-import backtype.storm.tuple.Fields;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
@@ -27,16 +25,20 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import org.apache.commons.io.FileUtils;
+import org.apache.storm.Config;
 import org.apache.storm.s3.output.BlockingTransferManagerUploader;
 import org.apache.storm.s3.output.Uploader;
+import org.apache.storm.trident.tuple.TridentTuple;
+import org.apache.storm.trident.tuple.TridentTupleView;
+import org.apache.storm.tuple.Fields;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import storm.trident.tuple.TridentTuple;
-import storm.trident.tuple.TridentTupleView;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class DefaultS3TransactionalOutputTest {
         config.put(ROTATION_SIZE, 1.0);
         config.put(ROTATION_UNIT, "KB");
 
-        AWSCredentialsProvider provider = new ProfileCredentialsProvider("aws-testing");
+        AWSCredentialsProvider provider = new ProfileCredentialsProvider("so");
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         client = new AmazonS3Client(provider.getCredentials(), clientConfiguration);
         tx = new BlockingTransferManagerUploader(client);
@@ -124,7 +126,7 @@ public class DefaultS3TransactionalOutputTest {
         S3ObjectSummary s3ObjectSummary = objectSummaries.get(0);
         File tempFile = File.createTempFile("test", "txt");
         FileUtils.copyInputStreamToFile(client.getObject(bucketName, s3ObjectSummary.getKey()).getObjectContent(), tempFile);
-        List<String> lines = FileUtils.readLines(tempFile);
+        List<String> lines = FileUtils.readLines(tempFile, StandardCharsets.UTF_8);
         assertEquals(size, lines.size());
         client.deleteObject(bucketName, s3ObjectSummary.getKey());
         client.deleteBucket(bucketName);

@@ -17,13 +17,13 @@
  */
 package org.apache.storm.s3.output;
 
-import backtype.storm.tuple.Fields;
 import org.apache.storm.s3.format.DefaultFileNameFormat;
 import org.apache.storm.s3.format.DelimitedRecordFormat;
 import org.apache.storm.s3.format.FileNameFormat;
 import org.apache.storm.s3.format.RecordFormat;
 import org.apache.storm.s3.rotation.FileRotationPolicy;
 import org.apache.storm.s3.rotation.FileSizeRotationPolicy;
+import org.apache.storm.tuple.Fields;
 
 import java.util.List;
 import java.util.Map;

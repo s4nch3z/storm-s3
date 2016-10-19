@@ -48,7 +48,7 @@ public class S3MemBufferedOutputStreamTest {
 
     @Test
     public void testStream() throws IOException {
-        AWSCredentialsProvider provider = new ProfileCredentialsProvider("aws-testing");
+        AWSCredentialsProvider provider = new ProfileCredentialsProvider("so");
         ClientConfiguration config = new ClientConfiguration();
         AmazonS3 client = new AmazonS3Client(provider.getCredentials(), config);
 

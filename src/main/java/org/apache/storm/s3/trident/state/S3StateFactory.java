@@ -17,13 +17,13 @@
  */
 package org.apache.storm.s3.trident.state;
 
-import backtype.storm.task.IMetricsContext;
 import org.apache.storm.s3.output.trident.DefaultS3TransactionalOutput;
 import org.apache.storm.s3.output.trident.S3TransactionalOutput;
+import org.apache.storm.task.IMetricsContext;
+import org.apache.storm.trident.state.State;
+import org.apache.storm.trident.state.StateFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import storm.trident.state.State;
-import storm.trident.state.StateFactory;
 
 import java.io.IOException;
 import java.util.Map;

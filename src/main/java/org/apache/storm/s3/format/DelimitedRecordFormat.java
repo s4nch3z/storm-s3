@@ -17,8 +17,8 @@
  */
 package org.apache.storm.s3.format;
 
-import backtype.storm.tuple.Fields;
-import backtype.storm.tuple.ITuple;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.tuple.ITuple;
 
 /**
  * RecordFormat implementation that uses field and record delimiters.

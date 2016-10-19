@@ -17,21 +17,22 @@
  */
 package org.apache.storm.s3.aggregator;
 
-import storm.trident.operation.ReducerAggregator;
-import storm.trident.tuple.TridentTuple;
+import lombok.NoArgsConstructor;
+import org.apache.storm.trident.operation.ReducerAggregator;
+import org.apache.storm.trident.tuple.TridentTuple;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class ListAggregator implements ReducerAggregator<List> {
 
-    public ListAggregator() {
-    }
-
+    @Override
     public List init() {
         return new ArrayList();
     }
 
+    @Override
     public List reduce(List curr, TridentTuple tuple) {
         curr.add(tuple);
         return curr;

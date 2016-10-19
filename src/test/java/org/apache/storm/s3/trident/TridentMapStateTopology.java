@@ -17,22 +17,22 @@
  */
 package org.apache.storm.s3.trident;
 
-import backtype.storm.Config;
-import backtype.storm.LocalCluster;
-import backtype.storm.StormSubmitter;
-import backtype.storm.generated.StormTopology;
-import backtype.storm.tuple.Fields;
-import backtype.storm.tuple.Values;
+import org.apache.storm.Config;
+import org.apache.storm.LocalCluster;
+import org.apache.storm.StormSubmitter;
+import org.apache.storm.generated.StormTopology;
 import org.apache.storm.s3.aggregator.ListAggregator;
 import org.apache.storm.s3.output.trident.DefaultFileOutputFactory;
 import org.apache.storm.s3.output.trident.FileOutputFactory;
 import org.apache.storm.s3.output.trident.DefaultS3TransactionalOutputFactory;
 import org.apache.storm.s3.output.trident.S3TransactionalOutputFactory;
 import org.apache.storm.s3.trident.state.map.S3TransactionalStateFactory;
-import storm.trident.Stream;
-import storm.trident.TridentTopology;
-import storm.trident.state.StateFactory;
-import storm.trident.testing.FixedBatchSpout;
+import org.apache.storm.trident.Stream;
+import org.apache.storm.trident.TridentTopology;
+import org.apache.storm.trident.state.StateFactory;
+import org.apache.storm.trident.testing.FixedBatchSpout;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.tuple.Values;
 
 import java.util.Arrays;
 import java.util.Map;
